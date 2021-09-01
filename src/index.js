@@ -35,7 +35,8 @@ console.log(panelData); // log the panelData
 console.log(constants); // log the open arrow
 console.log(linkData); // log the close arrow
 
-const { open, close } = constants; // {open: 'asdf', close: 'blah'}
+const { open, close } = constants;
+ // {open: 'asdf', close: 'blah'}
 // const open = constants.open
 // const close = constants.close
 
@@ -128,3 +129,27 @@ panelElements.forEach(panelElement => {
 // and returns an anchor tag with the right href, class and textContent.
 // Loop over the 'linkData' in the data folder, generate anchor tags
 // and append them to the nav.
+/*
+  <a href="#" class="nav-item">Home</a>
+  <a href="#" class="nav-item">About</a>
+  <a href="#" class="nav-item">Blog</a>
+  <a href="#" class="nav-item">Contact</a>
+*/
+
+function linkMaker({ href, className, text }) {
+  // const href = obj.href;
+  // const className = obj.className
+  const link = document.createElement('a');
+  link.href = href;
+  link.className = className;
+  link.textContent = text;
+  return link;
+}
+
+linkData.forEach(linkObj => {
+  const linkElem = linkMaker(linkObj);
+  document.querySelector('nav').appendChild(linkElem);
+  // const navEl = document.querySelector('nav');
+  // document.querySelector('.main-nav');
+  // navEl.appendChild(linkElem);
+})
